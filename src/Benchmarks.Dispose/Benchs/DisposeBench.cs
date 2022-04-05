@@ -1,9 +1,10 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Engines;
+using Benchmarks.Dispose.Models;
 
 namespace Benchmarks.Dispose.Benchs
 {
-    [SimpleJob(RunStrategy.Throughput, launchCount: 5)]
+    [SimpleJob(RunStrategy.Throughput, launchCount: 1)]
     [MemoryDiagnoser]
     public class DisposeBench
     {
@@ -24,79 +25,6 @@ namespace Benchmarks.Dispose.Benchs
         {
             using var customer = new CustomerWithDisposeAndSuppressFinalize();
             return customer.Id;
-        }
-    }
-
-    public enum CustomerTypeEnum
-    {
-        Undefinied = 0,
-        Standard = 1,
-        VIP = 2
-    }
-
-    public class Customer
-    {
-        // Properties
-        public Guid Id { get; }
-        public string Name { get; }
-        public CustomerTypeEnum CustomerType { get; }
-        public DateTime DateOfBirth { get; }
-
-        // Constructors
-        public Customer()
-        {
-            Id = Guid.NewGuid();
-            Name = $"Customer {Id}";
-            CustomerType = CustomerTypeEnum.Standard;
-            DateOfBirth = DateTime.UtcNow;
-        }
-    }
-    public class CustomerWithDispose
-        : IDisposable
-    {
-        // Properties
-        public Guid Id { get; }
-        public string Name { get; }
-        public CustomerTypeEnum CustomerType { get; }
-        public DateTime DateOfBirth { get; }
-
-        // Constructors
-        public CustomerWithDispose()
-        {
-            Id = Guid.NewGuid();
-            Name = $"Customer {Id}";
-            CustomerType = CustomerTypeEnum.Standard;
-            DateOfBirth = DateTime.UtcNow;
-        }
-
-        // Public Methods
-        public void Dispose()
-        {
-
-        }
-    }
-    public class CustomerWithDisposeAndSuppressFinalize
-        : IDisposable
-    {
-        // Properties
-        public Guid Id { get; }
-        public string Name { get; }
-        public CustomerTypeEnum CustomerType { get; }
-        public DateTime DateOfBirth { get; }
-
-        // Constructors
-        public CustomerWithDisposeAndSuppressFinalize()
-        {
-            Id = Guid.NewGuid();
-            Name = $"Customer {Id}";
-            CustomerType = CustomerTypeEnum.Standard;
-            DateOfBirth = DateTime.UtcNow;
-        }
-
-        // Public Methods
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
         }
     }
 }
