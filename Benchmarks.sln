@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{76C06708-942D-49F4-8D45-37E09061CCE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks.Dispose", "src\Benchmarks.Dispose\Benchmarks.Dispose.csproj", "{29F8513F-69E9-48FE-A00D-289C1CC37F1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmarks.Dispose", "src\Benchmarks.Dispose\Benchmarks.Dispose.csproj", "{29F8513F-69E9-48FE-A00D-289C1CC37F1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchmarks.StructAndRecords", "src\Benchmarks.StructAndRecords\Benchmarks.StructAndRecords.csproj", "{6DB11C7F-602A-4123-9E61-FE6347E4B9B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +19,17 @@ Global
 		{29F8513F-69E9-48FE-A00D-289C1CC37F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29F8513F-69E9-48FE-A00D-289C1CC37F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29F8513F-69E9-48FE-A00D-289C1CC37F1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB11C7F-602A-4123-9E61-FE6347E4B9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB11C7F-602A-4123-9E61-FE6347E4B9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB11C7F-602A-4123-9E61-FE6347E4B9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB11C7F-602A-4123-9E61-FE6347E4B9B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{29F8513F-69E9-48FE-A00D-289C1CC37F1E} = {76C06708-942D-49F4-8D45-37E09061CCE3}
+		{6DB11C7F-602A-4123-9E61-FE6347E4B9B7} = {76C06708-942D-49F4-8D45-37E09061CCE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A5B81428-271B-45B5-9344-3C20224FB704}

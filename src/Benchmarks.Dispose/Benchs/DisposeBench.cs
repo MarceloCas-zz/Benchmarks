@@ -1,10 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Engines;
 using Benchmarks.Dispose.Models;
 
 namespace Benchmarks.Dispose.Benchs
 {
     [SimpleJob(RunStrategy.Throughput, launchCount: 1)]
+    [HardwareCounters(HardwareCounter.BranchMispredictions, HardwareCounter.BranchInstructions)]
     [MemoryDiagnoser]
     public class DisposeBench
     {
