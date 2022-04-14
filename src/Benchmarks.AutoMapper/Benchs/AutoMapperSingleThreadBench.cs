@@ -22,6 +22,13 @@ namespace Benchmarks.AutoMapper.Benchs
                 q.CreateMap<AddressDto, Address>();
             }).CreateMapper();
         }
+        public MapsterMapper.IMapper CreateMapster()
+        {
+            var config = new Mapster.TypeAdapterConfig();
+            config.ForType<AddressDto, Address>();
+
+            return new MapsterMapper.Mapper(config);
+        }
         public AddressDto CreateAddressDto()
         {
             return new AddressDto
@@ -95,6 +102,38 @@ namespace Benchmarks.AutoMapper.Benchs
             for (int i = 0; i < RunCount; i++)
             {
                 var mapper = serviceProvider.CreateScope().ServiceProvider.GetService<IMapper>();
+                var address = mapper.Map<AddressDto, Address>(CreateAddressDto());
+                lastAddress = address;
+            }
+
+            return lastAddress;
+        }
+
+        // Mapster
+
+        [Benchmark()]
+        public Address? SingleThread_SingleMapsterInstance()
+        {
+            var mapper = CreateMapster();
+            var lastAddress = default(Address);
+
+            for (int i = 0; i < RunCount; i++)
+            {
+                var address = mapper.Map<AddressDto, Address>(CreateAddressDto());
+                lastAddress = address;
+            }
+
+            return lastAddress;
+        }
+
+        [Benchmark()]
+        public Address? SingleThread_MultiMapsterInstance()
+        {
+            var lastAddress = default(Address);
+
+            for (int i = 0; i < RunCount; i++)
+            {
+                var mapper = CreateMapster();
                 var address = mapper.Map<AddressDto, Address>(CreateAddressDto());
                 lastAddress = address;
             }
