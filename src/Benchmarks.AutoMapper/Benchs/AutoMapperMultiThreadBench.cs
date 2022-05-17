@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Engines;
@@ -136,8 +136,7 @@ namespace Benchmarks.AutoMapper.Benchs
             return lastAddress;
         }
 
-        Mapster
-       [Benchmark()]
+        [Benchmark()]
         public Address? MultiThread_SingleMapsterInstance()
         {
             var mapper = CreateMapster();
