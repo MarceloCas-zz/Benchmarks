@@ -54,5 +54,26 @@ namespace Benchmarks.StructAndRecords.Benchs
 
             return lastStreet;
         }
+
+        [Benchmark]
+        public string? RecordStructDeclaration()
+        {
+            var lastStreet = default(string);
+
+            for (int i = 0; i < RunCount; i++)
+            {
+                var address = new AddressRecordStruct(
+                    Street: string.Empty,
+                    Number: string.Empty,
+                    ZipCode: string.Empty,
+                    Neighborhood: string.Empty,
+                    City: string.Empty
+                );
+
+                lastStreet = address.Street;
+            }
+
+            return lastStreet;
+        }
     }
 }
